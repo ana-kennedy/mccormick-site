@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>McCormick's Property Maintenance, LLC</title>
+  <link rel="stylesheet" href="main.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <img class="logo"src="assets/images/McCormickLogo.png">
+      <nav>
+        <ul>
+          <li><a href="aboutus.html">About Us</a></li>
+          <li><a href="#cta">Contact/Booking</a></li> 
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h2>Professional, Licensed, Insured</h2>
+      <p>Work with the best Kansas City has to offer.</p>
+      <a href="#cta" class="btn">Contact Us</a>
+    </div>
+  </section>
+
+  <section class="services">
+    <div class="container">
+      <h3>Our Services</h3>
+      <h4 id="slideshow-trigger">Press For Work Examples</h4> 
+      <div class="service-grid">
+        <div class="service">
+          <h4>Driveway Sealing</h4>
+          <p>Seal your driveway for long-lasting protection.</p>
+        </div>
+        <div class="service">
+          <h4>Tree Removal</h4>
+          <p>Remove unwanted or dangerous trees safely.</p>
+        </div>
+        <div class="service">
+          <h4>Landscaping</h4>
+          <p>Clean, custom landscaping that stands out.</p>
+        </div>
+        <div class="service">
+          <h4>Retaining Walls</h4>
+          <p>Stylish, durable walls for your landscape.</p>
+        </div>
+        <div class="service">
+          <h4>Deck Repairs</h4>
+          <p>Fix and refresh worn or damaged decks.</p>
+        </div>
+        <div class="service">
+          <h4>Pressure Washing</h4>
+          <p>Clean surfaces with high-pressure washing.</p>
+        </div>
+        <div class="service">
+          <h4>Drainage Problems</h4>
+          <p>Resolve drainage issues with expert solutions.</p>
+        </div>
+        <div class="service">
+          <h4>Concrete & More</h4>
+          <p>Top-notch concrete work and handy fixes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slideshow Modal -->
+  <div id="slideshow-modal" class="modal hidden">
+    <div class="modal-content">
+      <button class="close-btn">
+        <img src="assets/images/closebuttonicon.png" alt="Close" />
+      </button>
+      <button class="prev-btn">
+        <img src="assets/images/reversebuttonicon.png" alt="Previous" />
+      </button>
+      <img id="slideshow-image" src="assets/images/nextbuttonicon.png" alt="Slideshow Image" />
+      <button class="next-btn">
+        <img src="assets/images/nextbuttonicon.png" alt="Next" />
+      </button>
+    </div>
+  </div>
+
+  <section class="cta" id="cta"> 
+    <div class="container">
+      <h3>Operated by Peyton McCormick</h3>
+      <h3 class="bookingblock">Contact for Booking:</h3>
+      <a href="tel:+18166818772">+1 (816)-681-8772</a>
+      <a href="mailto:peytonmccormick59@gmail.com">peytonmccormick59@gmail.com</a>
+      <div class="social-media">
+        <a href="https://www.facebook.com/profile.php?id=61569374422338" target="Facebook">
+          <img src="assets/images/facebookicon.png" alt="Facebook Icon" class="social-icon" />
+          Follow us on Facebook
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; McCormick Property Maintenance</p>
+    </div>
+  </footer>
+  <script src="main.js"></script> 
+  <script>
+    const hero = document.querySelector('.hero');
+    const imageCount = 60;
+    let index = 1;
+
+    
+    const preloadImages = () => {
+      for (let i = 1; i <= imageCount; i++) {
+        const img = new Image();
+        const paddedIndex = i.toString().padStart(2, '0'); // e.g., 01, 02, ..., 60
+        img.src = `assets/images/jpg/tree-service${paddedIndex}.jpg`;
+      }
+    };
+
+    preloadImages();
+
+    setInterval(() => {
+      const paddedIndex = index.toString().padStart(2, '0'); // e.g., 01, 02, ..., 60
+      const imagePath = `assets/images/jpg/tree-service${paddedIndex}.jpg`;
+      console.log(`Setting hero background to: ${imagePath}`); // Debug log
+      hero.style.backgroundImage = `url('${imagePath}')`;
+      index = (index % imageCount) + 1;
+    }, 3000);
+  </script>
+</body>
+</html>
