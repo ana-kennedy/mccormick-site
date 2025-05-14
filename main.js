@@ -24,6 +24,7 @@ function openModal() {
   console.log(`Opening modal with image: ${images[currentImageIndex]}`); // Debugging
   modalImage.src = images[currentImageIndex];
   modal.classList.add('visible');
+  preloadAdjacentImages();
 }
 
 function closeModal() {
@@ -34,10 +35,23 @@ function showPrevImage() {
   currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
   console.log(`Showing previous image: ${images[currentImageIndex]}`); // Debugging
   modalImage.src = images[currentImageIndex];
+  preloadAdjacentImages();
 }
 
 function showNextImage() {
   currentImageIndex = (currentImageIndex + 1) % images.length;
   console.log(`Showing next image: ${images[currentImageIndex]}`); // Debugging
   modalImage.src = images[currentImageIndex];
+  preloadAdjacentImages();
+}
+
+function preloadAdjacentImages() {
+  const prevIndex = (currentImageIndex - 1 + images.length) % images.length;
+  const nextIndex = (currentImageIndex + 1) % images.length;
+
+  const preloadPrev = new Image();
+  preloadPrev.src = images[prevIndex];
+
+  const preloadNext = new Image();
+  preloadNext.src = images[nextIndex];
 }
