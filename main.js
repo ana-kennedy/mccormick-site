@@ -7,9 +7,35 @@ const nextBtn = document.querySelector('.next-btn');
 
 let currentImageIndex = 0;
 
-
 const images = Array.from({ length: 55 }, (_, i) => `assets/images/jpg/tree-service${String(i + 1).padStart(2, '0')}.jpg`);
 
+// HERO SLIDESHOW (only 5 images)
+const heroImages = [
+  'assets/images/jpg/tree-service01.jpg',
+  'assets/images/jpg/tree-service02.jpg',
+  'assets/images/jpg/tree-service03.jpg',
+  'assets/images/jpg/tree-service04.jpg',
+  'assets/images/jpg/tree-service05.jpg'
+];
+
+let heroIndex = 0;
+const heroSection = document.querySelector('.hero');
+
+function updateHeroBackground() {
+  if (heroSection) {
+    heroSection.style.backgroundImage = `url('${heroImages[heroIndex]}')`;
+  }
+}
+
+function cycleHeroImage() {
+  heroIndex = (heroIndex + 1) % heroImages.length;
+  updateHeroBackground();
+}
+
+if (heroSection) {
+  updateHeroBackground();
+  setInterval(cycleHeroImage, 4000); // Change every 4 seconds
+}
 
 slideshowTrigger.addEventListener('click', () => {
   currentImageIndex = 0; 

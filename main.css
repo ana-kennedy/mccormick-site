@@ -88,20 +88,25 @@ nav ul li a {
 .hero::before {
   content: '';
   position: absolute;
-  top: -10%; /* Extend beyond the top */
-  left: -10%; /* Extend beyond the left */
-  width: 120%; /* Extend beyond the width */
-  height: 120%; /* Extend beyond the height */
-  background: inherit; /* Use the same background as the hero */
-  filter: blur(10px); /* Apply the blur effect */
-  z-index: 1; /* Place it behind the text */
+  top: -10%; 
+  left: -10%; 
+  width: 120%; 
+  height: 120%; 
+  background: inherit; 
+  filter: blur(10px); 
+  z-index: 1; 
 }
 
 .hero h2,
 .hero p,
 .hero .btn {
-  position: relative; /* Ensure these elements are above the blurred background */
-  z-index: 2; /* Place them above the pseudo-element */
+  position: relative; 
+  z-index: 2; 
+}
+
+.hero .btn:hover
+{
+  background-color: #444; 
 }
 
 .hero h2 {
@@ -180,7 +185,7 @@ nav ul li a {
   justify-content: center;
 }
 .service {
-  background: rgb(202, 202, 202);
+  background: rgb(184, 187, 159);
   padding: 20px;
   border-radius: 20px;
   text-align: center;
