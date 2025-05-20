@@ -95,15 +95,27 @@ const heroImages = [
 let heroIndex = 0;
 const heroSection = document.querySelector('.hero');
 
+// Only preload the first image
 function updateHeroBackground() {
   if (heroSection) {
-    heroSection.style.backgroundImage = `url('${heroImages[heroIndex]}')`;
+    const img = new Image();
+    img.onload = () => {
+      heroSection.style.backgroundImage = `url('${heroImages[heroIndex]}')`;
+    };
+    img.src = heroImages[heroIndex];
   }
 }
 
 function cycleHeroImage() {
   heroIndex = (heroIndex + 1) % heroImages.length;
-  updateHeroBackground();
+  // Preload next image and only update when loaded
+  if (heroSection) {
+    const img = new Image();
+    img.onload = () => {
+      heroSection.style.backgroundImage = `url('${heroImages[heroIndex]}')`;
+    };
+    img.src = heroImages[heroIndex];
+  }
 }
 
 if (heroSection) {
